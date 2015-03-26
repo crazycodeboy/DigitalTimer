@@ -9,7 +9,10 @@
         android:text="Handler+Runnable:"/>
 	<com.jph.dt.DigitalTimer android:id="@+id/dt"
 	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"></com.jph.dt.DigitalTimer>
+	    android:layout_height="wrap_content"
+        app:textColor="#7d3fe4"
+	    app:textSize="7sp"
+	    app:textBgRes="@drawable/digitalclock_selector"></com.jph.dt.DigitalTimer>
 	<TextView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CountDownTimer:"/>
@@ -19,12 +22,6 @@
 	    app:textColor="#7d3fe4"
 	    app:textSize="7sp"
 	    app:textBgRes="@drawable/digitalclock_selector"></com.jph.dt.DigitalTimer2>
-	<Chronometer
-	    android:id="@+id/chronometer1"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="Chronometer" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"

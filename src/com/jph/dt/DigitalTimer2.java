@@ -158,10 +158,10 @@ public class DigitalTimer2 extends LinearLayout {
 	public void setTextColor(int textColor) {
 		this.textColor = textColor;
 	}
-	public int getTextBg() {
+	public int getTextBgRes() {
 		return textBgRes;
 	}
-	public void setTextBg(int textBg) {
-		this.textBgRes = textBg;
+	public void setTextBgRes(int textBgRes) {
+		this.textBgRes = textBgRes;
 	}
 }

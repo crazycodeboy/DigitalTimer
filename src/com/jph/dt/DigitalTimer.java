@@ -1,9 +1,11 @@
 package com.jph.dt;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -12,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class DigitalTimer extends LinearLayout {
+	private static final float DEFAULT_TEXT_SIZE = 12;
+    private static final int DEFAULT_TEXT_COLOR = Color.WHITE;
+    private static final int DEFAULT_TEXT_BG = Color.parseColor("#969696");
 	private TextView h1;
 	private TextView h2;
 	private TextView hc;
@@ -20,12 +25,16 @@ public class DigitalTimer extends LinearLayout {
 	private TextView mc;
 	private TextView s1;
 	private TextView s2;
-	private TextView sc;
 	/**基准时间**/
 	private long baseTime;
 	/**改变的时间**/
 	private long changTime;
+	private float textSize;
+	private int textColor;
+	private int textBgRes;
 	private static final int REFRESH_DELAY = 1000;
+	/** 用于显示文字的控件的集合**/
+	private ArrayList<TextView>textViews;
 	private final Handler mHandler = new Handler();
 	private final Runnable mTimeRefresher = new Runnable() {
 		@Override
@@ -41,40 +50,27 @@ public class DigitalTimer extends LinearLayout {
 	}
 	public DigitalTimer(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DigitalTimer);
+		textSize = a.getDimension(R.styleable.DigitalTimer_textSize, DEFAULT_TEXT_SIZE);
+        textColor = a.getColor(R.styleable.DigitalTimer_textColor, DEFAULT_TEXT_COLOR);
+        textBgRes = a.getResourceId(R.styleable.DigitalTimer_textBgRes, DEFAULT_TEXT_BG);
+        a.recycle();
 		init(context);
 	}
 	private void init(Context context){
 		this.setOrientation(LinearLayout.HORIZONTAL);
-		h1 = new TextView(context);
-		h2 = new TextView(context);
-		hc = new TextView(context);
-		m1 = new TextView(context);
-		m2 = new TextView(context);
-		mc = new TextView(context);
-		s1 = new TextView(context);
-		s2 = new TextView(context);
-		sc = new TextView(context);
-		//设置背景
-//		h1.setBackgroundResource(R.drawable.digitalclock_selector);
-//		m2.setBackgroundResource(R.drawable.digitalclock_selector);
-		//设置字颜色
-		h1.setTextColor(Color.RED);
-		h2.setTextColor(Color.RED);
-		m1.setTextColor(Color.RED);
-		m2.setTextColor(Color.RED);
-		s1.setTextColor(Color.RED);
-		s2.setTextColor(Color.RED);
-		//设置字内容
-		h1.setText("0");
-		h2.setText("0");
-		hc.setText(":");
-		m1.setText("0");
-		m2.setText("0");
-		mc.setText(":");
-		s1.setText("0");
-		s2.setText("0");
+		textViews=new ArrayList<TextView>();
+		textViews.add(h1 = new TextView(context));
+		textViews.add(h2 = new TextView(context));
+		textViews.add(hc = new TextView(context));
+		textViews.add(m1 = new TextView(context));
+		textViews.add(m2 = new TextView(context));
+		textViews.add(mc = new TextView(context));
+		textViews.add(s1 = new TextView(context));
+		textViews.add(s2 = new TextView(context));
+		
 		//设置view宽高
-		LayoutParams lp = new LayoutParams(20,LayoutParams.WRAP_CONTENT, 1);  // 1是可选写的
+		LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT, 0);
 		lp.setMargins(2,0, 2, 0);
 		h1.setLayoutParams(lp);
 		h2.setLayoutParams(lp);
@@ -82,24 +78,19 @@ public class DigitalTimer extends LinearLayout {
 		m2.setLayoutParams(lp);
 		s1.setLayoutParams(lp);
 		s2.setLayoutParams(lp);
-		//设置内容居中
-		h1.setGravity(Gravity.CENTER);
-		h2.setGravity(Gravity.CENTER);
-		hc.setGravity(Gravity.CENTER);
-		m1.setGravity(Gravity.CENTER);
-		m2.setGravity(Gravity.CENTER);
-		s1.setGravity(Gravity.CENTER);
-		s2.setGravity(Gravity.CENTER);
-		sc.setGravity(Gravity.CENTER);
-		//添加view
-		this.addView(h1);
-		this.addView(h2);
-		this.addView(hc);
-		this.addView(m1);
-		this.addView(m2);
-		this.addView(mc);
-		this.addView(s1);
-		this.addView(s2);
+		for(TextView view:textViews){
+			view.setPadding(1, 0, 1, 0);
+			view.setText("0");//设置字内容
+			view.setBackgroundResource(textBgRes);//设置背景
+			view.setTextColor(textColor);//设置字颜色
+			view.setTextSize(textSize);
+			view.setGravity(Gravity.CENTER);//设置内容居中
+			this.addView(view);//添加view
+		}
+		hc.setText(":");
+		hc.setBackgroundColor(Color.TRANSPARENT);
+		mc.setText(":");
+		mc.setBackgroundColor(Color.TRANSPARENT);
 	}
 	/**
 	 * 设置基准时间
@@ -148,5 +139,23 @@ public class DigitalTimer extends LinearLayout {
 			textView1.setText("0");
 			textView2.setText(text);
 		}
+	}
+	public float getTextSize() {
+		return textSize;
+	}
+	public void setTextSize(float textSize) {
+		this.textSize = textSize;
+	}
+	public int getTextColor() {
+		return textColor;
+	}
+	public void setTextColor(int textColor) {
+		this.textColor = textColor;
+	}
+	public int getTextBgRes() {
+		return textBgRes;
+	}
+	public void setTextBgRes(int textBgRes) {
+		this.textBgRes = textBgRes;
 	}
 }
