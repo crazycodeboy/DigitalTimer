@@ -3,7 +3,7 @@
 - 在功能上DigitalTimer支持启动计时，计时暂停等功能。
  
 ## 运行效果图 ##
-![运行效果图](https://github.com/crazycodeboy/GroupListView/blob/dev/raw/%E8%BF%90%E8%A1%8C%E6%95%88%E6%9E%9C%E5%9B%BE.gif?raw=true)
+![运行效果图](https://github.com/crazycodeboy/DigitalTimer/blob/master/raw/%E6%95%B0%E5%AD%97%E8%AE%A1%E6%97%B6%E5%99%A8.gif?raw=true)
 
 
 ## XML Attributes ##
