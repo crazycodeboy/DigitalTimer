@@ -9,10 +9,12 @@
 ## XML Attributes ##
 <table>
 <tbody>
+<<<<<<< HEAD
 <tr><td><em>Attribute 	Related </em></td><td><em>Related Method</em></td><td><em>Description</em></td></tr>
 <tr><td>app:textColor	 </td><td>setBaseTime(long baseTime)</td><td>设置基准时间</td></tr>
 <tr><td>app:textBgRes</td><td>setTextBgRes(int textBgRes)</td><td>设置文字背景</td></tr>
 <tr><td>app:textSize</td><td>etTextSize(float textSize)</td><td>设置文字大小</td></tr>
+
 </tbody>
 </table>
 
