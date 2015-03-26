@@ -22,7 +22,8 @@
 ## 使用方法 ##
 1.  ```java public void setBaseTime(long baseTime)```设置基准时间
 2.  ```java public void start()```开始计时。
-3. ```java public void stop()```停止计时。 
-4 .其它使用细节可以参照实例。
+3. ```java public void stop()```停止计时。
+4. 其它使用细节可以参照实例。
+
 
 
