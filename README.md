@@ -1,7 +1,8 @@
 # DigitalTimer简介 #
 - 在样式上DigitalTimer支持自定义文字背景，大小，颜色的自定义。
 - 在功能上DigitalTimer支持启动计时，计时暂停等功能。
- 
+
+ 关于DigitalTimer的更多介绍，[请点击这里](http://blog.csdn.net/fengyuzhengfan/article/details/44654045)
 ## 运行效果图 ##
 ![运行效果图](https://github.com/crazycodeboy/DigitalTimer/blob/master/raw/%E6%95%B0%E5%AD%97%E8%AE%A1%E6%97%B6%E5%99%A8.gif?raw=true)
 
